@@ -16,8 +16,6 @@ const state = {
     totalPages: Math.ceil(data.length / perPage)
 }
 
-console.log(state.totalPages)
-
 const controls = {
     next() {
         state.page++
@@ -34,5 +32,20 @@ const controls = {
             state.page++
         }
     },
-    goTo() {}
+    goTo(page) {
+        if (page < 1) {
+            page = 1
+        }
+
+        state.page = page
+
+        if(page > state.totalPages) {
+            state.page = state.totalPages
+        }
+
+    }
 }
+
+console.log(state.page)
+controls.goTo(22)
+console.log(state.page)
