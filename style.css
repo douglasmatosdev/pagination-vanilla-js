@@ -41,12 +41,12 @@ header {
 }
 
 #pagination .item{
-    border-bottom: 1px solid hsl(32, 98%, 12%)
+    border-bottom: 1px solid hsl(32, 98%, 12%);
+    padding: 16px 32px;
 }
 
-#pagination .item:hover {
+#pagination .list .item:hover {
     background-color: rgba(255, 255, 255, 0.04);
-
 }
 
 #pagination .navigation {
