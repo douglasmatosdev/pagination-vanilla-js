@@ -8,8 +8,14 @@ function generateList() {
         return data
 }
 const data = generateList()
-let perPage = 5
 
+const html = {
+    get(element) {
+        return document.querySelector(element)
+    }
+}
+
+let perPage = 5
 const state = {
     page: 1,
     perPage,
@@ -43,9 +49,32 @@ const controls = {
             state.page = state.totalPages
         }
 
+    },
+    createListeners() {
+        html.get('.first').addEventListener('click', () => {
+            controls.goTo(1)
+            update()
+        })
+
+        html.get('.last').addEventListener('click', () => {
+            controls.goTo(state.totalPages)
+            update()
+        })
+
+        html.get('.next').addEventListener('click', () => {
+            controls.next()
+            update()
+        })
+
+        html.get('.prev').addEventListener('click', () => {
+            controls.prev()
+            update()
+        })
     }
 }
 
-console.log(state.page)
-controls.goTo(22)
-console.log(state.page)
+controls.createListeners()
+
+function update() {
+    console.log(state.page)
+}
